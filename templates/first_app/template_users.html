@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "first_app/Template_page.html" %}
+    {% block body_block %}
+    <div>
+        {% if users %}
+
+            <table class="table table-primary table-striped table-hover">
+                <thead>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                </thead>
+
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        {% else %}
+        <p>No users</p>
+        {% endif %}
+    </div>
+    {% endblock %}

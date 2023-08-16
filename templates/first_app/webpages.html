@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebPages Access Record</title>
+    <link rel="stylesheet" href="{% static 'css/my_styles.css' %}">
+</head>
+<body>
+    <h1>Hi, Welcome to my Django App</h1>
+    <h2>Here are your access records</h2>
+    <div>
+        {% if webpages %}
+            <table>
+                <thead>
+                    <th>Site Name</th>
+                    <th>Date Accessed</th>
+                </thead>
+
+                {% for pag in webpages %}
+                    <tr>
+                        <td>{{ pag.name }}</td>
+                        <td>{{ pag.date }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+        {% else %}
+        <p>No access records</p>
+        {% endif %}
+    </div>
+</body>
+</html>

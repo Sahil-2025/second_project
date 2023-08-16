@@ -1,0 +1,43 @@
+{% extends  "second_app/base.html" %}
+{% block body_block %}
+{% load static %}
+<div class="w-75">
+    {% if users %}
+
+        <table class="table table-primary table-striped table-hover">
+            <thead>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Website</th>
+                <th>Profile Picture</th>
+            </thead>
+
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% for key, value in profiles.items %}
+                            {% if key == user.username %}
+                                {{ value.portfolio_site }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td class="text-center">
+                        {% for key, value in profiles.items %}
+                            {% if key == user.username %}
+                            <img src="{% static value.profile_pic %}" class="img-fluid dtext-center" style="max-width: 25%; height: auto" alt="Uh Oh, didn't show">
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    {% else %}
+    <p>No users</p>
+    {% endif %}
+</div>
+
+
+{% endblock %}
