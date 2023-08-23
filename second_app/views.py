@@ -105,7 +105,7 @@ def user_list(request):
             profiles_dict[user.username] = profile
         except UserProfileInfo.DoesNotExist:
             pass
-        
+# this is a comment
     print(profiles_dict)
     users_dict = { "users" : users_list, "profiles" : profiles_dict }
 
